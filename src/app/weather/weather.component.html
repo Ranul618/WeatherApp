@@ -1,21 +1,57 @@
 <div class="mycontainer">
 
+    <div class="search">
+
+        <form #form="ngForm" (submit)="getWeather()">
+
+            <input type="text" name="cityName" placeholder="Enter city Name" [(ngModel)]="city">
+
+        </form>
+
+    </div>
+
     <div class="card text-white bg-primary m-5" style="max-width: 18rem;">
+
         <div class="card-header">
-            <h2>City: {{city}}</h2>
+
+            <h2>City: {{city|titlecase}}</h2>
             <p><img src="{{iconUrl}}" alt="Weather Image"></p>
+
         </div>
+
+
         <div class="card-body">
+
             <p class="card-text">Summary: {{summary}}</p>
             <p class="card-text">Description: {{description | titlecase}}</p>
-            <p class="card-text">Temperature: {{temperature}}­°C</p>
-            <p class="card-text">Max Temperature: {{maxtemp}}°C</p>
-            <p class="card-text">Max Temperature: {{mintemp}}°C</p>
-            <p class="card-text">Feels Like: {{feelslike}}°C</p>
+            <p class="card-text">Temperature: {{temperature}}­°{{units=='imperial'?'F':'C'}}</p>
+            <p class="card-text">Max Temperature: {{maxtemp}}°{{units=='imperial'?'F':'C'}}</p>
+            <p class="card-text">Min Temperature: {{mintemp}}°{{units=='imperial'?'F':'C'}}</p>
+            <p class="card-text">Feels Like: {{feelslike}}°{{units=='imperial'?'F':'C'}}</p>
             <p class="card-text">Pressure: {{pressure}} hPa</p>
             <p class="card-text">Humidity: {{humidity}}%</p>
-            <p class="card-text">Visibility: {{visibility/1000}}km</p>
-            <p class="card-text">Wind Speed: {{windspeed*3.6}}km/h</p>
+            <!--<p class="card-text">Visibility: {{visibility/1000}}{{units=='imperial'?'mi':'km'}}</p>
+            <p class="card-text">Wind Speed: {{windspeed*3.6}}{{units=='imperial'?'mp/h':'km/h'}}</p>-->
+
+        </div>
+
+        <div class="card-footer bg-transparent border-success">
+
+            <form class="myRadioButtons">
+
+                <label class="radio-inline">
+
+                    <input type="radio" (change)="onRadioButtonChange()" name="unitsRadioButtons"
+                        [checked]="units=='imperial' ? true : false">°F
+                </label>
+
+                <label class="radio-inline">
+                    
+                    <input type="radio" (change)="onRadioButtonChange()" name="unitsRadioButtons">°C
+
+                </label>
+
+            </form>
         </div>
 
     </div>

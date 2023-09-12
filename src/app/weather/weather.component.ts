@@ -15,21 +15,28 @@ export class WeatherComponent implements OnInit {
   humidity:number=0;
   summary:string='';
   iconUrl:string='';
-  city:string='Colombo';
+  city:string='';
   units:string='metric';
   maxtemp:number=0;
   mintemp:number=0;
   description:string='';
   visibility:number=0;
   windspeed:number=0;
+  apikey:string='e93f715178531d39db578f6e717f8ed6';
 
 
   constructor(private weatherService: WeatherService){}
 
-
   ngOnInit(): void {
+    this.getWeather();
+  }
+
+
+  getWeather(){
+
+
     
-    this.weatherService.getweather(this.city, this.units).subscribe({
+    this.weatherService.getweather(this.city, this.units, this.apikey).subscribe({
 
       next: (res)=>{
         console.log(res)
@@ -52,8 +59,19 @@ export class WeatherComponent implements OnInit {
       error:(error)=>console.log(error.message),
       complete:()=>console.log('API Call Completed')
 
-    })
+    })}
 
+
+  
+
+  onRadioButtonChange() {
+    if (this.units == 'imperial') {
+      this.units = 'metric';
+    } else {
+      this.units = 'imperial';
+    }
+
+    this.getWeather();
   }
 
 }
