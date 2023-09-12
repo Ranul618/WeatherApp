@@ -2,7 +2,7 @@
 
     <div class="card text-white bg-primary m-5" style="max-width: 18rem;">
         <div class="card-header">
-            <h2>{{city}}</h2>
+            <h2>City: {{city}}</h2>
             <p><img src="{{iconUrl}}" alt="Weather Image"></p>
         </div>
         <div class="card-body">
@@ -14,6 +14,9 @@
             <p class="card-text">Feels Like: {{feelslike}}°C</p>
             <p class="card-text">Pressure: {{pressure}} hPa</p>
             <p class="card-text">Humidity: {{humidity}}%</p>
+            <p class="card-text">Visibility: {{visibility/1000}}km</p>
+            <p class="card-text">Wind Speed: {{windspeed*3.6}}km/h</p>
         </div>
 
     </div>
+</div>

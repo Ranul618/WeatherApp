@@ -15,11 +15,13 @@ export class WeatherComponent implements OnInit {
   humidity:number=0;
   summary:string='';
   iconUrl:string='';
-  city:string='Sydney';
+  city:string='Colombo';
   units:string='metric';
   maxtemp:number=0;
   mintemp:number=0;
   description:string='';
+  visibility:number=0;
+  windspeed:number=0;
 
 
   constructor(private weatherService: WeatherService){}
@@ -42,6 +44,8 @@ export class WeatherComponent implements OnInit {
         this.maxtemp=this.myWeather.main.temp_max;
         this.mintemp=this.myWeather.main.temp_min;
         this.description=this.myWeather.weather[0].description;
+        this.visibility=this.myWeather.visibility;
+        this.windspeed=this.myWeather.wind.speed;
         
       },
 
