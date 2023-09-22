@@ -15,7 +15,7 @@ export class WeatherComponent implements OnInit {
   humidity:number=0;
   summary:string='';
   iconUrl:string='';
-  city:string='';
+  city:string='Colombo';
   units:string='metric';
   maxtemp:number=0;
   mintemp:number=0;
@@ -57,7 +57,7 @@ export class WeatherComponent implements OnInit {
       },
 
       error:(error)=>console.log(error.message),
-      complete:()=>console.log('API Call Completed')
+      //complete:()=>console.log('API Call Completed')
 
     })}
 
